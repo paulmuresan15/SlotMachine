@@ -56,18 +56,30 @@ public class SlotMachine {
         gui.getPlayButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playSlots();
-                try {
-                    playCasinoSound();
-                } catch (LineUnavailableException | UnsupportedAudioFileException | IOException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
+                if(Integer.parseInt(gui.getCreditTextField().getText())>=Integer.parseInt(gui.getBetTextField().getText()) && Integer.parseInt(gui.getCreditTextField().getText())!=0 && Integer.parseInt(gui.getBetTextField().getText())!=0) {
+                    playSlots();
+                    try {
+                        playCasinoSound();
+                    } catch (LineUnavailableException | UnsupportedAudioFileException | IOException lineUnavailableException) {
+                        lineUnavailableException.printStackTrace();
+                    }
+                }
+                else
+                {
+                    try {
+                        playError();
+                    } catch (LineUnavailableException | IOException | UnsupportedAudioFileException lineUnavailableException) {
+                        lineUnavailableException.printStackTrace();
+                    }
                 }
             }
+
+
         });
 
     }
 
-    public Integer calculateScore(int mid1, int mid2, int mid3, int mid4, int mid5, int bet) {
+    public Integer calculateScore(int mid1, int mid2, int mid3, int mid4, int mid5) {
         ArrayList<Integer> scores = new ArrayList<>();
         ArrayList<Integer> counts = new ArrayList<>();
         scores.add(mid1);
@@ -86,7 +98,7 @@ public class SlotMachine {
         counts.add(count3);
         counts.add(count4);
         Integer max = counts.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new);
-        return (max - 1) * bet;
+        return max;
     }
     public void initImages(){
         gui.getImg11().setIcon(placeholder);
@@ -139,10 +151,18 @@ public class SlotMachine {
         gui.getImg35().setIcon(imageIconList.get(imageIndex35));
         int credit = Integer.parseInt(gui.getCreditTextField().getText());
         int bet = Integer.parseInt(gui.getBetTextField().getText());
-        int score = calculateScore(imageIndex21, imageIndex22, imageIndex23, imageIndex24, imageIndex25, bet);
-        gui.getScoreTextField().setText(score + bet + "");
-        int newCredit = credit + score;
-        gui.getCreditTextField().setText(String.valueOf(newCredit));
+        int score = calculateScore(imageIndex21, imageIndex22, imageIndex23, imageIndex24, imageIndex25);
+        int newCredit = credit + score*bet;
+        if(score>=3) {
+            gui.getScoreTextField().setText(score*bet  + "");
+            gui.getCreditTextField().setText(String.valueOf(newCredit));
+        }
+        else
+        {
+            gui.getScoreTextField().setText("You lost "+bet);
+            gui.getCreditTextField().setText(String.valueOf(credit-bet));
+        }
+
     }
     public void playCasinoSound() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
         String soundName = "casinosound.wav";
