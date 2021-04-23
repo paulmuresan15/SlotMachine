@@ -1,1 +1,1 @@
-![Screenshot](screenshot.png)
+![Screenshot](src/main/resources/screenshot.png)

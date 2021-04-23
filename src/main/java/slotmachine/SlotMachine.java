@@ -20,11 +20,11 @@ public class SlotMachine {
 
     public SlotMachine(GUI gui) {
         this.gui = gui;
-        imageIconList.add(new ImageIcon("slotimages/pacanele_cirese.png"));
-        imageIconList.add(new ImageIcon("slotimages/pacanele_lebenita.png"));
-        imageIconList.add(new ImageIcon("slotimages/pacanele_portocala.png"));
-        imageIconList.add(new ImageIcon("slotimages/pacanele_pruna.png"));
-        imageIconList.add(new ImageIcon("slotimages/pacanele_saptar.png"));
+        imageIconList.add(new ImageIcon("src/main/resources/slotimages/pacanele_cirese.png"));
+        imageIconList.add(new ImageIcon("src/main/resources/slotimages/pacanele_lebenita.png"));
+        imageIconList.add(new ImageIcon("src/main/resources/slotimages/pacanele_portocala.png"));
+        imageIconList.add(new ImageIcon("src/main/resources/slotimages/pacanele_pruna.png"));
+        imageIconList.add(new ImageIcon("src/main/resources/slotimages/pacanele_saptar.png"));
     }
 
     public void initSlotMachine() {
@@ -165,21 +165,21 @@ public class SlotMachine {
 
     }
     public void playCasinoSound() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-        String soundName = "casinosound.wav";
+        String soundName = "src/main/resources/casinosound.wav";
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         clip.start();
     }
     public void playKaching() throws LineUnavailableException, IOException, UnsupportedAudioFileException{
-        String soundName = "kaching.wav";
+        String soundName = "src/main/resources/kaching.wav";
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
         clip.start();
     }
     public void playError() throws LineUnavailableException, IOException, UnsupportedAudioFileException{
-        String soundName = "errorsound.wav";
+        String soundName = "src/main/resources/errorsound.wav";
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
