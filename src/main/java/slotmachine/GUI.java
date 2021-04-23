@@ -68,10 +68,65 @@ public class GUI {
     }
 
 
+    public JLabel getImg11() {
+        return img11;
+    }
 
+    public JLabel getImg12() {
+        return img12;
+    }
 
+    public JLabel getImg13() {
+        return img13;
+    }
 
+    public JLabel getImg14() {
+        return img14;
+    }
 
+    public JLabel getImg15() {
+        return img15;
+    }
+
+    public JLabel getImg21() {
+        return img21;
+    }
+
+    public JLabel getImg22() {
+        return img22;
+    }
+
+    public JLabel getImg23() {
+        return img23;
+    }
+
+    public JLabel getImg24() {
+        return img24;
+    }
+
+    public JLabel getImg25() {
+        return img25;
+    }
+
+    public JLabel getImg31() {
+        return img31;
+    }
+
+    public JLabel getImg32() {
+        return img32;
+    }
+
+    public JLabel getImg33() {
+        return img33;
+    }
+
+    public JLabel getImg34() {
+        return img34;
+    }
+
+    public JLabel getImg35() {
+        return img35;
+    }
 
     public JPanel getPanelPhotos() {
         return panelPhotos;
